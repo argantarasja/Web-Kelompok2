@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelompok 1 XII TKJ 1</title>
+  <style>
+    :root {
+      --pink: #ffc0cb;
+      --pink-dark: #e6aab5;
+      --maroon: #800000;
+      --maroon-2: #a52a2a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: var(--pink);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ==== POPUP ==== */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .popup-box {
+      background: var(--pink);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      max-width: 320px;
+      width: 90%;
+    }
+
+    .popup-box h2 {
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+      color: var(--maroon);
+    }
+
+    .popup-box p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .start-btn {
+      background: var(--maroon);
+      color: #fff;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+    .start-btn:hover { background: var(--maroon-2); }
+
+    /* ==== BERANDA ==== */
+    .beranda {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .kelompok-box {
+      background: var(--pink-dark);
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+  .member {
+  background: linear-gradient(180deg, var(--maroon), var(--maroon-2));
+  border-radius: 12px;
+  width: 220px; /* lebih besar di laptop */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  color: white;
+  cursor: pointer;
+  transition: transform .12s ease;
+  position: relative;
+}
+    .member:active { transform: translateY(2px); }
+
+  .member-inner {
+  width: 100%;
+  aspect-ratio: 9/16; /* awalnya persegi */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 2.4rem;
+  position: relative;
+  overflow: hidden;
+  background: rgba(0,0,0,0.08);
+  transition: aspect-ratio .4s ease; /* transisi mulus */
+}
+
+/* Saat open → ubah ke 9:16 */
+.member.open .member-inner {
+  aspect-ratio: 9/16;
+}
+
+    .member-num {
+      z-index: 2;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+
+    .photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      transform: translateY(100%);
+      transition: transform .45s ease;
+    }
+
+    .member.open .member-num { opacity: 0; }
+    .member.open .photo { transform: translateY(0); }
+
+    .name-row {
+      margin-top: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .ig-btn {
+      background: var(--maroon);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(122,15,22,0.12);
+      transition: background .2s ease;
+    }
+    .ig-btn:hover { background: var(--maroon-2); }
+
+    /* Responsif */
+    @media (max-width: 768px) {
+  .member {
+    width: 80%; /* di hp otomatis besar full */
+    max-width: 300px;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- POPUP -->
+  <div class="popup" id="popup">
+    <div class="popup-box">
+      <h2>Kelompok 1 XII TKJ 1</h2>
+      <p>Welcome to Website Kelompok 1</p>
+      <button class="start-btn" id="startBtn">MULAI</button>
+    </div>
+  </div>
+
+  <!-- BERANDA -->
+  <div class="beranda" id="beranda">
+    <div class="kelompok-box">
+      <h2>KELOMPOK 1 XII TKJ 1</h2>
+    </div>
+    <div class="kelompok-box">
+      <!-- Anggota 1 -->
+      <div class="member">
+        <div class="member-inner">
+          <span class="member-num">1</span>
+          <img src="bunga.jpg" alt="Foto 1" class="photo">
+        </div>
+        <div class="name-row">
+          <a href="#" class="ig-btn">Bunga Sri Rahayu</a>
+        </div>
+      </div>
+      <!-- Anggota 2 -->
+      <div class="member">
+        <div class="member-inner">
+          <span class="member-num">2</span>
+          <img src="farah.jpg" alt="Foto 2" class="photo">
+        </div>
+        <div class="name-row">
+          <a href="#" class="ig-btn">Farah Nur Safriya</a>
+        </div>
+      </div>
+      <!-- Anggota 3 -->
+      <div class="member">
+        <div class="member-inner">
+          <span class="member-num">3</span>
+          <img src="indah.png" alt="Foto 3" class="photo">
+        </div>
+        <div class="name-row">
+          <a href="#" class="ig-btn">Ayu Indah Dwi Lestari</a>
+        </div>
+      </div>
+      <!-- Anggota 4 -->
+      <div class="member">
+        <div class="member-inner">
+          <span class="member-num">4</span>
+          <img src="naila.jpg" alt="Foto 4" class="photo">
+        </div>
+        <div class="name-row">
+          <a href="#" class="ig-btn">Naila Sarifudin</a>
+        </div>
+      </div>
+      <!-- Anggota 5 -->
+      <div class="member">
+        <div class="member-inner">
+          <span class="member-num">5</span>
+          <img src="salwa.png" alt="Foto 5" class="photo">
+        </div>
+        <div class="name-row">
+          <a href="#" class="ig-btn">Salwa Nur Latifah</a>
+        </div>
+      </div>
+    </div>
+    <div class="kelompok-box">
+      <h2>TERIMA KASIH</h2>
+    </div>
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="bgMusic" src="lagu.mp3"></audio>
+
+  <script>
+    const popup = document.getElementById('popup');
+    const beranda = document.getElementById('beranda');
+    const startBtn = document.getElementById('startBtn');
+    const bgMusic = document.getElementById('bgMusic');
+
+    startBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+      beranda.style.display = 'flex';
+      bgMusic.play();
+    });
+
+    // Fungsi klik anggota
+    const members = document.querySelectorAll('.member');
+    members.forEach(member => {
+      const inner = member.querySelector('.member-inner');
+      inner.addEventListener('click', () => {
+        member.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
